@@ -33,7 +33,10 @@ namespace Repetition
 
             } else if (selection == 3)
             {
-                Console.WriteLine("This section is being worked on, sorry...");
+                Console.WriteLine("Input number for split addition:");
+                number = int.Parse(Console.ReadLine());
+
+                SplitAdd(number);
 
             } else
             {
@@ -95,6 +98,69 @@ namespace Repetition
             }
 
             Console.WriteLine("Your answer is " + calc + ".");
+        }
+
+        static void SplitAdd(int given)
+        {
+            int number = given;
+            int odd = 0;
+            int even = 0;
+
+            if (number > 0)
+            {
+                if (number % 2 == 0)
+                {
+                    do
+                    {
+                        even += number;
+                        number -= 1;
+                        odd += number;
+                        number -= 1;
+
+                    } while (number > 0);
+                } else
+                {
+                    do
+                    {
+                        odd += number;
+                        number -= 1;
+                        even += number;
+                        number -= 1;
+
+                    } while (number > 0);
+                }
+            } else if (number < 0)
+            {
+                number *= -1;
+
+                if (number % 2 == 0)
+                {
+                    do
+                    {
+                        even += number;
+                        number -= 1;
+                        odd += number;
+                        number -= 1;
+
+                    } while (number > 0);
+                }
+                else
+                {
+                    do
+                    {
+                        odd += number;
+                        number -= 1;
+                        even += number;
+                        number -= 1;
+
+                    } while (number > 0);
+                }
+
+                odd *= -1;
+                even *= -1;
+            }
+
+            Console.WriteLine("Your answers are " + odd + " for odd numbers, and " + even + " for even numbers.");
         }
     }
 }
